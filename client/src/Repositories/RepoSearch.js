@@ -2,7 +2,7 @@ import React from 'react';
 import RepoList from "./components/RepoList";
 import axios from "axios";
 
-class Repos extends React.Component {
+class RepoSearch extends React.Component {
     constructor(props) {
         super(props);
 
@@ -52,22 +52,23 @@ class Repos extends React.Component {
 
         return (
             <div>
-                <form>
-                    <div className="form-control">
-                        <label htmlFor="query">Search Query</label>
-                        <input 
-                            type="text" 
-                            id="query" 
-                            name="searchQuery"
-                            value={this.state.searchQuery} 
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    
-                </form>
-                <button onClick={this.fetchAllRepos}>Search</button>
+                <div className="search__area">
+                    <form className="search__form">
+                        <div className="form-control">
+                            <label htmlFor="query">Search Query</label>
+                            <input 
+                                type="text" 
+                                id="query" 
+                                name="searchQuery"
+                                value={this.state.searchQuery} 
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <button className="btn" onClick={this.fetchAllRepos}>Search</button>    
+                    </form>                    
+                </div>
 
-                <div className="main-content">
+                <div className="search-result__content">
                     {content}
                 </div>
             </div>            
@@ -75,4 +76,4 @@ class Repos extends React.Component {
     }
 }
 
-export default Repos;
+export default RepoSearch;
