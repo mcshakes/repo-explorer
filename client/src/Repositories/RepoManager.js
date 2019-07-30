@@ -2,14 +2,15 @@ import React from 'react';
 import RepoList from "./components/RepoList";
 import axios from "axios";
 
-class RepoSearch extends React.Component {
+class RepoManager extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             searchQuery: "",
             loading: false,
-            repos: []
+            repos: [],
+            sortButtons: false
         }
     };
 
@@ -32,12 +33,25 @@ class RepoSearch extends React.Component {
 			const repos = resData.data.items;
             this.setState({ 
                 repos: repos,
-                loading: false
+                loading: false,
+                sortButtons: true
             });
 		})
         .catch(err => {
 			console.log(err);
 		})
+    }
+
+    sortStarsAscending = () => {
+        this.setState(prevState => {
+            return this.state.repos.sort((a, b) => (a.stargazers_count - b.stargazers_count))
+        })
+        console.log(this.state.repos)
+    }
+
+    sortStarsDescending = () => {
+        // copy the original
+        // sort and then 
     }
 
     render() {
@@ -67,7 +81,16 @@ class RepoSearch extends React.Component {
                     </form>
                     <button className="btn" onClick={this.fetchAllRepos}>Search</button>                     
                 </div>
-
+                {this.state.sortButtons && (
+                    <div className="search-result__actions">
+                        <button 
+                            className="btn"
+                            onClick={this.sortStarsAscending}
+                        >
+                            Sort By Stars
+                        </button>
+                    </div>                    
+                )}
                 <div className="search-result__content">
                     {content}
                 </div>
@@ -76,4 +99,4 @@ class RepoSearch extends React.Component {
     }
 }
 
-export default RepoSearch;
+export default RepoManager;
