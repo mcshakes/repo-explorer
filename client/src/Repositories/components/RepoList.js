@@ -1,5 +1,6 @@
 import React from 'react';
 import RepoItem from "./RepoItem";
+import "./RepoList.css";
 
 const RepoList = props => {
     

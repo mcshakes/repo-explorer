@@ -2,13 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .search__form {
     width: 30rem;
     max-width: 80%;
-    background: red;
-
     display: flex;
     justify-content: center;
     flex-direction: column;

@@ -1,7 +1,13 @@
 .repo__list {
-	width: 40rem;
+	width: 50rem;
 	max-width: 90%;
-	margin: 2rem auto;
+	
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+	/* margin: 2rem auto; */
 	list-style: none;
 	padding: 0;
+	list-style-type: none;
 }

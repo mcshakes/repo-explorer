@@ -1,4 +1,5 @@
 import React from 'react';
+import "./RepoItem.css";
 
 const RepoItem = props => {
     return <li className="repo__list-item">

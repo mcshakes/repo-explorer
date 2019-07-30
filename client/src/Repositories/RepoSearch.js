@@ -63,9 +63,9 @@ class RepoSearch extends React.Component {
                                 value={this.state.searchQuery} 
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <button className="btn" onClick={this.fetchAllRepos}>Search</button>    
-                    </form>                    
+                        </div>                        
+                    </form>
+                    <button className="btn" onClick={this.fetchAllRepos}>Search</button>                     
                 </div>
 
                 <div className="search-result__content">
