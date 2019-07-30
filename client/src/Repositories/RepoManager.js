@@ -85,14 +85,16 @@ class RepoManager extends React.Component {
                 <div className="search__area">
                     <form className="search__form">
                         <div className="form-control">
-                            <label htmlFor="query">Search Query</label>
+                            
                             <input 
                                 type="text" 
                                 id="query" 
                                 name="searchQuery"
+                                className="question"
                                 value={this.state.searchQuery} 
                                 onChange={this.handleChange}
                             />
+                            <label htmlFor="query"><span>What are you looking for?</span></label>
                         </div>                        
                     </form>
                     <button className="btn" onClick={this.fetchAllRepos}>Search</button>                     
