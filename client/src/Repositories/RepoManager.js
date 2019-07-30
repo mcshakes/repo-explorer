@@ -10,7 +10,8 @@ class RepoManager extends React.Component {
             searchQuery: "",
             loading: false,
             repos: [],
-            sortButtons: false
+            sortButtons: false,
+            sortAscending: true
         }
     };
 
@@ -42,16 +43,31 @@ class RepoManager extends React.Component {
 		})
     }
 
-    sortStarsAscending = () => {
-        this.setState(prevState => {
-            return this.state.repos.sort((a, b) => (a.stargazers_count - b.stargazers_count))
-        })
-        console.log(this.state.repos)
-    }
+    // sortStarsAscending = () => {
+    //     this.setState(prevState => {
+    //         return this.state.repos.sort((a, b) => (a.stargazers_count - b.stargazers_count))
+    //     })
+    // }
 
-    sortStarsDescending = () => {
-        // copy the original
-        // sort and then 
+    // sortStarsDescending = () => {
+    //     this.setState(prevState => {
+    //         return this.state.repos.sort((a, b) => (b.stargazers_count - a.stargazers_count))
+    //     })
+    // }
+
+    sortByStars = () => {
+        let sortedData = this.state.repos.sort((a, b) => {
+            if (this.state.sortAscending) {
+                return a.stargazers_count - b.stargazers_count
+            } else {
+                return b.stargazers_count - a.stargazers_count
+            }
+        })
+
+        this.setState({
+            sortAscending: !this.state.sortAscending,
+            data: sortedData
+        })
     }
 
     render() {
@@ -85,7 +101,7 @@ class RepoManager extends React.Component {
                     <div className="search-result__actions">
                         <button 
                             className="btn"
-                            onClick={this.sortStarsAscending}
+                            onClick={this.sortByStars}
                         >
                             Sort By Stars
                         </button>
