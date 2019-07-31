@@ -96,15 +96,6 @@ input.question:valid + label > span {
   color: white;
 }
 
-
-/* input.question:valid + label {
-  border-color: green;
-}
-
-input.question:invalid {
-  box-shadow: none;
-} */
-
 input.question + label > span {
   font-weight: 300;
   margin: 0;

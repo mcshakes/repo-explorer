@@ -29,7 +29,6 @@ router.get("/repos", (req, res) => {
             return res.json({ source: "cache", data: JSON.parse(repos)})
         }
         else {
-            console.log("QUERY", query)
             axios.get("https://api.github.com/search/repositories?q=" + query, {
                 method: "get",
                 headers: headers
