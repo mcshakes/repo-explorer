@@ -11,7 +11,7 @@ const RepoItem = props => {
             <p>WRITTEN IN: {props.language}</p>
             <p>STARS: {props.star}</p>
         </div>
-        <div>
+        <div className="repo__list-item-image">
             <img src={props.owner.avatar_url} alt={props.owner.login} />
         </div>
     </li>
