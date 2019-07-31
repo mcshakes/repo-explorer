@@ -1,20 +1,6 @@
 import React from 'react';
 import RepoList from "./Repositories/components/RepoList";
-import RepoItem from "./Repositories/components/RepoItem";
 import axios from "axios";
-
-function searchingFor(searchTerm) {
-  if (!searchTerm) return () => false;
-
-  let searchLetters = searchTerm.split("").slice(0,4).join("")
-
-  return function(x) {
-    //   console.log("Object coming in", x)
-    //   console.log("letters", searchLetters)
-    return x.description.toLowerCase().includes(searchLetters.toLowerCase())
-  }
-    
-}
 
 class RepoManager extends React.Component {
     constructor(props) {
@@ -92,20 +78,6 @@ class RepoManager extends React.Component {
                         </div>)
         }
 
-        // if (this.state.fuzzyValue) {
-        //     let repoArray = this.state.repos;
-        //     content = repoArray.filter(searchingFor(this.state.fuzzyValue)).map(object => {
-        //         return <RepoItem 
-        //             key={object.id}
-        //             name={object.name}
-        //             description={object.description}
-        //             language={object.language}
-        //             star={object.stargazers_count}
-        //             owner={object.owner}
-        //         />
-        //     })
-        // }
-
         return (
             <div>
                 <div className="intro__section">
@@ -151,7 +123,3 @@ class RepoManager extends React.Component {
 }
 
 export default RepoManager;
-
-// {this.state.fuzzyValue && (
-//     repoArray = this.state.repos
-// )}

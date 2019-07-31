@@ -3,28 +3,50 @@ const router = express.Router()
 const axios = require('axios');
 const bodyParser = require("body-parser");
 const secretToken = process.env.GITHUB_TOKEN
+const redis = require('redis')
+
+
+const redisClient = redis.createClient(6379)
+
+redisClient.on("error", (err) => {
+	console.log("Error : ", err)
+})
+
 
 router.get("/repos", (req, res) => {
     const query = req.query.query
+
+    const reposRedisKey = "query:repos";
 
     const headers = {
         "Content-Type": "application/json",
         "Authorization": secretToken
     }
 
-    axios.get("https://api.github.com/search/repositories?q=" + query, {
-        method: "get",
-        headers: headers
+    return redisClient.get(query, (err, repos) => {
+        if (err) throw err;
+        if (repos) {
+            return res.json({ source: "cache", data: JSON.parse(repos)})
+        }
+        else {
+            axios.get("https://api.github.com/search/repositories?q=" + query, {
+                method: "get",
+                headers: headers
+            })
+            .then(response => {
+                return response.data
+            })
+            .then(data => {                
+                redisClient.setex(query, 600, JSON.stringify(data))
+
+                res.json(data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
     })
-    .then(response => {
-        return response.data
-    })
-    .then(data => {
-        res.json(data)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
+    
 
 })
 

@@ -2,7 +2,9 @@ const express = require("express");
 const axios = require('axios');
 const app = express();
 const bodyParser = require("body-parser");
+const redis = require('redis')
 const path = require("path");
+const morgan = require("morgan");
 
 require('dotenv').config()
 
@@ -17,6 +19,7 @@ app.use((req, res, next) => {
 	next();
 })
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -26,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 // });
 
+app.use(morgan("dev"));
 
 const port = process.env.PORT || 3001
 
