@@ -1,6 +1,21 @@
 import React from 'react';
-import RepoList from "./components/RepoList";
+import RepoList from "./Repositories/components/RepoList";
+import RepoItem from "./Repositories/components/RepoItem";
 import axios from "axios";
+import SearchBar from "./SearchBar";
+
+function searchingFor(searchTerm) {
+  if (!searchTerm) return () => false;
+
+  let searchLetters = searchTerm.split("").slice(0,-1).join("")
+
+  return function(x) {
+    //   console.log("Object coming in", x)
+    //   console.log("letters", searchLetters)
+    return x.description.toLowerCase().includes(searchLetters.toLowerCase())
+  }
+    
+}
 
 class RepoManager extends React.Component {
     constructor(props) {
@@ -11,7 +26,9 @@ class RepoManager extends React.Component {
             loading: false,
             repos: [],
             sortButtons: false,
-            sortAscending: true
+            sortAscending: true,
+            fuzzySearch: false,
+            fuzzyValue: ""
         }
     };
 
@@ -35,25 +52,14 @@ class RepoManager extends React.Component {
             this.setState({ 
                 repos: repos,
                 loading: false,
-                sortButtons: true
+                sortButtons: true,
+                fuzzySearch: true
             });
 		})
         .catch(err => {
 			console.log(err);
 		})
     }
-
-    // sortStarsAscending = () => {
-    //     this.setState(prevState => {
-    //         return this.state.repos.sort((a, b) => (a.stargazers_count - b.stargazers_count))
-    //     })
-    // }
-
-    // sortStarsDescending = () => {
-    //     this.setState(prevState => {
-    //         return this.state.repos.sort((a, b) => (b.stargazers_count - a.stargazers_count))
-    //     })
-    // }
 
     sortByStars = () => {
         let sortedData = this.state.repos.sort((a, b) => {
@@ -70,14 +76,34 @@ class RepoManager extends React.Component {
         })
     }
 
+    handleFuzzySearch = (fuzzyValue) => {
+        this.setState({
+            fuzzyValue: fuzzyValue
+        })
+    }
+
     render() {
         const repos = this.state.repos;
         let content;
 
-        if (!repos) {
-            content = <div>Nothing Here</div>
-        } else {
-            content = <RepoList repos={repos} />
+        if (repos) {
+            content = (<div className="search-result__content">
+                        <RepoList repos={repos} />
+                        </div>)
+        }
+
+        if (this.state.fuzzyValue) {
+            let repoArray = this.state.repos;
+            content = repoArray.filter(searchingFor(this.state.fuzzyValue)).map(object => {
+                return <RepoItem 
+                    key={object.id}
+                    name={object.name}
+                    description={object.description}
+                    language={object.language}
+                    star={object.stargazers_count}
+                    owner={object.owner}
+                />
+            })
         }
 
         return (
@@ -113,12 +139,18 @@ class RepoManager extends React.Component {
                         </button>
                     </div>                    
                 )}
-                <div className="search-result__content">
-                    {content}
-                </div>
+                {this.state.fuzzySearch && <SearchBar onFuzzySearch={this.handleFuzzySearch}/>}
+
+                
+                
+                {content}
             </div>            
         )
     }
 }
 
 export default RepoManager;
+
+// {this.state.fuzzyValue && (
+//     repoArray = this.state.repos
+// )}
