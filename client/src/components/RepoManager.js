@@ -43,7 +43,7 @@ class RepoManager extends React.Component {
 
         axios({
             method: "get",
-            url: "http://localhost:3001/repos",
+            url: "/repos",
             params: { query: query }
         })
         .then(resData => {
