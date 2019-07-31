@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RepoSearch from "./Repositories/RepoSearch";
+import RepoSearch from "./components/RepoManager";
 
 function App() {
   return (

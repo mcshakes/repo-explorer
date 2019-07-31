@@ -1,3 +1,24 @@
+.intro__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro__section h1 {
+    color: #ecf0f1;
+    padding: 0 5%;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 4rem;
+}
+
+.intro__section h2 {
+    color: #35C955;
+    padding: 0 5%;
+    font-size: 1.5rem;
+}
+ 
 .search__area {
     display: flex;
     justify-content: center;
@@ -11,5 +32,89 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 2rem;
+}
+
+.search-result__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    font-size: 22px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+input.question {
+  font-size: 48px;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  border: none;
+  width: 80%;
+  color: #FD6A02;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+}
+
+input.question + label {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  width: 10%;
+  border-top: 1px solid red;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+  height: 0px;
+}
+
+input.question:focus + label {
+  width: 80%;
+}
+
+input.question:focus,
+input.question:valid {
+  padding-top: 35px;
+}
+
+input.question:focus + label > span,
+input.question:valid + label > span {
+  top: -100px;
+  font-size: 22px;
+  color: white;
+}
+
+
+/* input.question:valid + label {
+  border-color: green;
+}
+
+input.question:invalid {
+  box-shadow: none;
+} */
+
+input.question + label > span {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  color: #8F8F8F;
+  font-size: 48px;
+  top: -66px;
+  left: 0px;
+  z-index: -1;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 }
 
