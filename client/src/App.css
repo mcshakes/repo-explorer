@@ -14,7 +14,7 @@
 }
 
 .intro__section h2 {
-    color: #ecf0f1;
+    color: #35C955;
     padding: 0 5%;
     font-size: 1.5rem;
 }
@@ -61,6 +61,7 @@ input.question {
   margin: 0;
   border: none;
   width: 80%;
+  color: #FD6A02;
   background: rgba(0, 0, 0, 0);
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
   overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */

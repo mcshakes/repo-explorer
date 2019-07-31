@@ -1,24 +1,28 @@
 .repo__list-item {
 	margin: 1rem 0;
 	padding: 1rem;
-	border: 1px solid #01a7a7;
+	border: 1px solid #787878;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 10px;
 
+
+    background-color: #F0F0F0;
+    opacity: 0.8;
+    color: #282828;
 }
 
 .repo__list-item h3 {
 	margin: 0;
 	font-size: 1.5rem;
-	color: #5101d1;
+	color: #154b81;
 }
 
 .repo__list-item h4 {
 	margin-bottom: 0;
 	font-size: 1rem;
-	color: grey;
+	color: #282828;
 }
 
 .repo__list-item p {

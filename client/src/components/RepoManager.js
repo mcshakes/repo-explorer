@@ -2,12 +2,11 @@ import React from 'react';
 import RepoList from "./Repositories/components/RepoList";
 import RepoItem from "./Repositories/components/RepoItem";
 import axios from "axios";
-import SearchBar from "./SearchBar";
 
 function searchingFor(searchTerm) {
   if (!searchTerm) return () => false;
 
-  let searchLetters = searchTerm.split("").slice(0,-1).join("")
+  let searchLetters = searchTerm.split("").slice(0,4).join("")
 
   return function(x) {
     //   console.log("Object coming in", x)

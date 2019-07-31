@@ -65,14 +65,14 @@ class RepoList extends React.Component {
 
         return (
             <div>
-                <div>
+                {this.state.filtered.length > 0 && <div>
                     <input 
                         type="text" 
                         className="input" 
                         placeholder="Search..." 
                         onChange={this.handleChange}
                         />
-                </div>
+                </div>}
                 <ul className="repo__list"> { repos } </ul>
             </div>
             
