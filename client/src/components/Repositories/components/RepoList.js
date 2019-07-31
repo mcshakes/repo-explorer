@@ -65,7 +65,7 @@ class RepoList extends React.Component {
 
         return (
             <div>
-                {this.state.filtered.length > 0 && <div>
+                {this.state.filtered.length > 0 && <div className="repo__list-searchbar">
                     <input 
                         type="text" 
                         className="input" 
