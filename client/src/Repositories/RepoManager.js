@@ -82,6 +82,10 @@ class RepoManager extends React.Component {
 
         return (
             <div>
+                <div className="intro__section">
+                    <h1>Discover New Repositories.</h1>
+                    <h2>Stare at new code. Stalk people you've never met</h2>
+                </div>
                 <div className="search__area">
                     <form className="search__form">
                         <div className="form-control">

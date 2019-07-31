@@ -1,3 +1,24 @@
+.intro__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro__section h1 {
+    color: #ecf0f1;
+    padding: 0 5%;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 4rem;
+}
+
+.intro__section h2 {
+    color: #ecf0f1;
+    padding: 0 5%;
+    font-size: 1.5rem;
+}
+ 
 .search__area {
     display: flex;
     justify-content: center;
@@ -71,7 +92,7 @@ input.question:focus + label > span,
 input.question:valid + label > span {
   top: -100px;
   font-size: 22px;
-  color: #333;
+  color: white;
 }
 
 
@@ -95,3 +116,4 @@ input.question + label > span {
   -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 }
+
