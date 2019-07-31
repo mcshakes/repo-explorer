@@ -28,7 +28,7 @@ class RepoManager extends React.Component {
             sortButtons: false,
             sortAscending: true,
             fuzzySearch: false,
-            fuzzyValue: ""
+            fuzzyValue: []
         }
     };
 
@@ -92,19 +92,19 @@ class RepoManager extends React.Component {
                         </div>)
         }
 
-        if (this.state.fuzzyValue) {
-            let repoArray = this.state.repos;
-            content = repoArray.filter(searchingFor(this.state.fuzzyValue)).map(object => {
-                return <RepoItem 
-                    key={object.id}
-                    name={object.name}
-                    description={object.description}
-                    language={object.language}
-                    star={object.stargazers_count}
-                    owner={object.owner}
-                />
-            })
-        }
+        // if (this.state.fuzzyValue) {
+        //     let repoArray = this.state.repos;
+        //     content = repoArray.filter(searchingFor(this.state.fuzzyValue)).map(object => {
+        //         return <RepoItem 
+        //             key={object.id}
+        //             name={object.name}
+        //             description={object.description}
+        //             language={object.language}
+        //             star={object.stargazers_count}
+        //             owner={object.owner}
+        //         />
+        //     })
+        // }
 
         return (
             <div>
@@ -139,7 +139,7 @@ class RepoManager extends React.Component {
                         </button>
                     </div>                    
                 )}
-                {this.state.fuzzySearch && <SearchBar onFuzzySearch={this.handleFuzzySearch}/>}
+                {/* {this.state.fuzzySearch && <SearchBar onFuzzySearch={this.handleFuzzySearch}/>} */}
 
                 
                 
