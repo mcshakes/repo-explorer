@@ -2,6 +2,8 @@ const express = require("express");
 const axios = require('axios');
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
+
 require('dotenv').config()
 
 app.use((req, res, next) => {
@@ -17,6 +19,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 const port = process.env.PORT || 3001
 
