@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import RepoSearch from "./components/RepoManager";
+import RepoManager from "./components/RepoManager";
 
 function App() {
   return (
     <div className="App">
-      <RepoSearch />
+      <RepoManager />
     </div>
   );
 }

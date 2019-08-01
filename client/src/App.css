@@ -80,7 +80,7 @@ input.question + label {
   height: 0px;
 }
 
-input.question:focus + label {
+/* input.question:focus + label {
   width: 80%;
 }
 
@@ -94,6 +94,24 @@ input.question:valid + label > span {
   top: -100px;
   font-size: 22px;
   color: white;
+} */
+
+
+input.question:focus,
+input.question:valid {
+  padding-top: 35px;
+}
+
+textarea.question:valid,
+textarea.question:focus {
+  margin-top: 35px;
+} 
+
+input.question:focus + label > span,
+input.question:valid + label > span {
+  top: -100px;
+  font-size: 22px;
+  color:  white;
 }
 
 input.question + label > span {
