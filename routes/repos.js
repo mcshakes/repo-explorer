@@ -26,7 +26,7 @@ router.get("/repos", (req, res) => {
     return redisClient.get(query, (err, repos) => {
         if (err) throw err;
         if (repos) {
-            return res.json({ source: "cache", data: JSON.parse(repos)})
+            return res.json({ source: "cache", ...JSON.parse(repos)})
         }
         else {
             axios.get("https://api.github.com/search/repositories?q=" + query, {
@@ -39,7 +39,7 @@ router.get("/repos", (req, res) => {
             .then(data => {                
                 redisClient.setex(query, 600, JSON.stringify(data))
 
-                res.json(data)
+                res.json({source: 'api',  ...data});
             })
             .catch(function (error) {
                 console.log(error);
