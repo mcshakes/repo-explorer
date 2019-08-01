@@ -79,12 +79,12 @@ class RepoManager extends React.Component {
         }
 
         return (
-            <div>
+            <div className="container">
                 <div className="intro__section">
                     <h1>Discover New Repositories.</h1>
                     <h2>Stare at new code. Stalk people you've never met</h2>
                 </div>
-                <div className="search__area">
+                {this.state.repos.length === 0 && <div className="search__area">
                     <form className="search__form" onSubmit={this.fetchAllRepos}>
                         <div className="form-control">
                             
@@ -99,21 +99,9 @@ class RepoManager extends React.Component {
                             <label htmlFor="query"><span>What are you looking for?</span></label>
                         </div>                        
                         <button className="btn" type="submit">Search</button> 
-                    </form>
-                                        
-                </div>
-                {this.state.sortButtons && (
-                    <div className="search-result__actions">
-                        <button 
-                            className="btn"
-                            onClick={this.sortByStars}
-                        >
-                            Sort By Stars
-                        </button>
-                    </div>                    
-                )}
-                {/* {this.state.fuzzySearch && <SearchBar onFuzzySearch={this.handleFuzzySearch}/>} */}
-
+                    </form>                                        
+                </div>}
+                
                 
                 
                 {content}
