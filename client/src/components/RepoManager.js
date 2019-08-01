@@ -82,7 +82,7 @@ class RepoManager extends React.Component {
             <div className="container">
                 <div className="intro__section">
                     <h1>Discover New Repositories.</h1>
-                    <h2>Stare at new code. Stalk people you've never met</h2>
+                    <h2>Find new Code. Learn new Things</h2>
                 </div>
                 {this.state.repos.length === 0 && <div className="search__area">
                     <form className="search__form" onSubmit={this.fetchAllRepos}>
@@ -101,6 +101,16 @@ class RepoManager extends React.Component {
                         <button className="btn" type="submit">Search</button> 
                     </form>                                        
                 </div>}
+                {this.state.sortButtons && (
+                    <div className="search-result__actions">
+                        <button 
+                            className="btn"
+                            onClick={this.sortByStars}
+                        >
+                            Sort By Stars
+                        </button>
+                    </div>                    
+                )}
                 
                 
                 
