@@ -6,7 +6,7 @@ const secretToken = process.env.GITHUB_TOKEN
 const redis = require('redis')
 
 
-const redisClient = redis.createClient(6379)
+const redisClient = redis.createClient(process.env.REDIS_URL);
 
 redisClient.on("error", (err) => {
 	console.log("Error : ", err)
